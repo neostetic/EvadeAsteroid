@@ -1,5 +1,6 @@
 ### EvadeAsteroid
 #### About this project
+![ss_1.png](files%2Fss_1.png)
 - This project is a _remake_ of old project of mine, that I made for High School (check it out [here](https://github.com/neostetic/java-arcade-game)).
 - **Inspiration:** Space Shooter, Bind of Isac
 - **Developer:** [@neostetic](https://github.com/neostetic/java-arcade-game) - Jan Poláček
