@@ -4,6 +4,7 @@ import cz.polacek.config.Config;
 import cz.polacek.engine.Panel;
 import cz.polacek.engine.entities.Entity;
 import cz.polacek.engine.entities.player.Player;
+import cz.polacek.engine.thread.Interval;
 import cz.polacek.engine.utils.Utils;
 
 import java.util.Random;
@@ -57,7 +58,7 @@ public class Powerup extends Entity {
     }
 
     void randomPosition() {
-        setX(Utils.randomInteger(2, Config.TILES_HORIZONTAL - 2) * Config.TILE_COMPUTED);
-        setY(Utils.randomInteger(2, Config.TILES_VERTICAL - 2) * Config.TILE_COMPUTED);
+        setX(Utils.randomInteger(2, Config.TILES_HORIZONTAL - 3) * Config.TILE_COMPUTED);
+        setY(Utils.randomInteger(2, Config.TILES_VERTICAL - 3) * Config.TILE_COMPUTED);
     }
 }

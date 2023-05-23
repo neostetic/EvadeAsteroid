@@ -169,7 +169,7 @@ public class Player extends Entity {
 
     public void addPLAYER_HEALTH(int count_life) {
         for (int i = 0; i < count_life; i++) {
-            if (getPLAYER_HEALTH() + 1 < Config.PLAYER_MAX_HEALTH) {
+            if (getPLAYER_HEALTH() < Config.PLAYER_MAX_HEALTH) {
                 this.PLAYER_HEALTH = getPLAYER_HEALTH() + 1;
             }
         }
@@ -185,7 +185,7 @@ public class Player extends Entity {
 
     public void addPLAYER_SHIELD(int count_shield) {
         for (int i = 0; i < count_shield; i++) {
-            if (getPLAYER_SHIELD() + 1 < Config.PLAYER_MAX_SHIELD) {
+            if (getPLAYER_SHIELD() < Config.PLAYER_MAX_SHIELD) {
                 this.PLAYER_SHIELD = getPLAYER_SHIELD() + 1;
             }
         }
@@ -205,5 +205,9 @@ public class Player extends Entity {
 
     public void setyVel(double yVel) {
         this.yVel = yVel;
+    }
+
+    public Face getPlayerFace() {
+        return playerFace;
     }
 }

@@ -8,7 +8,7 @@ public  class Config {
 
     static public String TITLE = "EvadeAsteroid 2.0";
     static public int PREFERRED_FPS = 60;
-    static public PanelController PANEL_CONTROLLER = PanelController.PS_COLOR;
+    static public PanelController PANEL_CONTROLLER = PanelController.XBOX_COLOR;
     static public ColorPalette COLOR_PALETTE = ColorPalette.PICO8;
     static public boolean WINDOW_RESIZABLE = false;
     static public boolean WINDOW_VISIBLE = true;
@@ -25,12 +25,11 @@ public  class Config {
     static public int PLAYER_MAX_HEALTH = 3;
     static public int PLAYER_MAX_SHIELD = 5;
     static public int PLAYERNAME_MAX_LENGTH = 6;
-    static public int ENEMY_SPAWN_INTERVAL = 30;
-    static public int ENEMY_MAX_COUNT = 15;
+    static public int ENEMY_MAX_COUNT = 12;
     static public double ENEMY_MIN_VELOCITY = .1;
     static public double ENEMY_MAX_VELOCITY = 1.25;
-    static public int BULLET_INTERVAL = 500;
-    static public int BULLET_MAX_COUNT = 20;
+    static public int BULLET_INTERVAL = 250;
+    static public int BULLET_MAX_COUNT = 10;
     static public double BULLET_SPEED = (TILE_SIZE / 5) * SCALE;
     static public int POWERUP_POINTS = 500;
     static public String RECORD_FILE = "records.csv";

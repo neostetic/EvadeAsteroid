@@ -22,34 +22,34 @@
 - You can freely edit or change **engine** used variables.
 - **Config file's path:** `src/cz/polacek/config/Config.class`
 
-| NAME                      | DESCRIPTION                                                                                                  | DEFAULT VALUE                        |
-|---------------------------|--------------------------------------------------------------------------------------------------------------|--------------------------------------|
-| **TITLE**                 | Sets title on main window.                                                                                   | `EvadeAsteroid 2.0`                  |
-| **PREFERRED_FPS**         | Sets preferred FPS for update (please, don't change).                                                        | `60`                                 |
-| **PANEL_CONTROLLER**      | Sets controller's icons support for specific controller (`PS`, `PS_COLOR`, `XBOX`, `XBOX_COLOR`, `COMPUTER`). | `PanelController.COMPUTER`           |
-| **COLOR_PALETTE**         | Sets already predefined color palette.                                                                       | `ColorPalette.PICO8`                 |
-| **WINDOW_RESIZABLE**      | Sets _window resizable_ property.                                                                            | `false`                              |
-| **WINDOW_VISIBLE**        | Sets _window visible_ property.                                                                              | `true`                               |
-| **SCALE**                 | Sets scaling level.                                                                                          | `3`                                  |
-| **TILE_SIZE**             | Sets tile size.                                                                                              | `16`                                 |
-| **TILES_HORIZONTAL**      | Sets horizontal tile count.                                                                                  | `20`                                 |
-| **TILES_VERTICAL**        | Sets vertical tile count.                                                                                   | `15`                                 |
-| **TILE_COMPUTED**         | Sets properly sized tile variable (don't change).                                                            | `TILE_SIZE * SCALE`                  |
-| **WINDOW_WIDTH**          | Sets specific window width.                                                                                  | `(TILE_COMPUTED * TILES_HORIZONTAL)` |
-| **WINDOW_HEIGHT**         | Sets specific window height.                                                                                 | `(TILE_COMPUTED * TILES_VERTICAL)`   |
-| **GRAVITY**               | Sets player's gravity level.                                                                                 | `1.01`                               |
-| **PLAYER_SLOWDOWN**       | Sets player's slowdown level.                                                                                | `16`                                 |
-| **PLAYER_SPEED**          | Sets player's calculated speed.                                                                              | `(TILE_SIZE / 10) * SCALE`           |
-| **PLAYER_MAX_HEALTH**     | Sets player's max health/lifes.                                                                              | `3`                                  |
-| **PLAYER_MAX_SHIELD**     | Sets player's max shields.                                                                                   | `5`                                  |
-| **PLAYERNAME_MAX_LENGTH** | Sets maximal length name for scoreboard.                                                                     | `6`                                  |
-| **ENEMY_MAX_COUNT**       | Sets max enemy count.                                                                                        | `15` (may change)                    |
-| **ENEMY_MIN_VELOCITY**    | Sets min enemy velocity level.                                                                               | `.1`                                 |
-| **ENEMY_MAX_VELOCITY**    | Sets max enemy velocity level.                                                                               | `1.25`                               |
-| **BULLET_INTERVAL**       | Sets bullet separation interval (ms).                                                                        | `500`                                |
-| **BULLET_MAX_COUNT**      | Sets max bullets in one time count.                                                                          | `20`                                 |
-| **BULLET_SPEED**          | Sets bullet's speed.                                                                                         | `(TILE_SIZE / 5) * SCALE`            |
-| **POWERUP_POINTS**        | Sets point for collecting `ADD_MONEY` create.                                                                | `500`                                |
-| **RECORD_FILE**           | Sets record's output file.                                                                                   | `records.csv`                        |
-| **ALLOWED_CHARACTERS**    | Sets allowed name characters.                                                                                | ...                                  |
-| **STRING_FORMATTERS**     | Sets string patterns/replacements.                                                                           | ...                                  |
+| NAME                      | DESCRIPTION                                                                                                    | DEFAULT VALUE                        |
+|---------------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------|
+| **TITLE**                 | Sets title on main window.                                                                                     | `EvadeAsteroid 2.0`                  |
+| **PREFERRED_FPS**         | Sets preferred FPS for update (please, don't change).                                                          | `60`                                 |
+| **PANEL_CONTROLLER**      | Sets controller's icons support for specific controller (`PS`, `PS_COLOR`, `XBOX`, `XBOX_COLOR`, `COMPUTER`).  | `PanelController.COMPUTER`           |
+| **COLOR_PALETTE**         | Sets already predefined color palette.                                                                         | `ColorPalette.PICO8`                 |
+| **WINDOW_RESIZABLE**      | Sets _window resizable_ property.                                                                              | `false`                              |
+| **WINDOW_VISIBLE**        | Sets _window visible_ property.                                                                                | `true`                               |
+| **SCALE**                 | Sets scaling level.                                                                                            | `3`                                  |
+| **TILE_SIZE**             | Sets tile size.                                                                                                | `16`                                 |
+| **TILES_HORIZONTAL**      | Sets horizontal tile count.                                                                                    | `20`                                 |
+| **TILES_VERTICAL**        | Sets vertical tile count.                                                                                      | `15`                                 |
+| **TILE_COMPUTED**         | Sets properly sized tile variable (don't change).                                                              | `TILE_SIZE * SCALE`                  |
+| **WINDOW_WIDTH**          | Sets specific window width.                                                                                    | `(TILE_COMPUTED * TILES_HORIZONTAL)` |
+| **WINDOW_HEIGHT**         | Sets specific window height.                                                                                   | `(TILE_COMPUTED * TILES_VERTICAL)`   |
+| **GRAVITY**               | Sets player's gravity level.                                                                                   | `1.01`                               |
+| **PLAYER_SLOWDOWN**       | Sets player's slowdown level.                                                                                  | `16`                                 |
+| **PLAYER_SPEED**          | Sets player's calculated speed.                                                                                | `(TILE_SIZE / 10) * SCALE`           |
+| **PLAYER_MAX_HEALTH**     | Sets player's max health/lifes.                                                                                | `3`                                  |
+| **PLAYER_MAX_SHIELD**     | Sets player's max shields.                                                                                     | `5`                                  |
+| **PLAYERNAME_MAX_LENGTH** | Sets maximal length name for scoreboard.                                                                       | `6`                                  |
+| **ENEMY_MAX_COUNT**       | Sets max enemy count.                                                                                          | `12` (may change)                    |
+| **ENEMY_MIN_VELOCITY**    | Sets min enemy velocity level.                                                                                 | `.1`                                 |
+| **ENEMY_MAX_VELOCITY**    | Sets max enemy velocity level.                                                                                 | `1.25`                               |
+| **BULLET_INTERVAL**       | Sets bullet separation interval (ms).                                                                          | `250`                                |
+| **BULLET_MAX_COUNT**      | Sets max bullets in one time count.                                                                            | `10`                                 |
+| **BULLET_SPEED**          | Sets bullet's speed.                                                                                           | `(TILE_SIZE / 5) * SCALE`            |
+| **POWERUP_POINTS**        | Sets point for collecting `ADD_MONEY` create.                                                                  | `500`                                |
+| **RECORD_FILE**           | Sets record's output file.                                                                                     | `records.csv`                        |
+| **ALLOWED_CHARACTERS**    | Sets allowed name characters.                                                                                  | ...                                  |
+| **STRING_FORMATTERS**     | Sets string patterns/replacements.                                                                             | ...                                  |

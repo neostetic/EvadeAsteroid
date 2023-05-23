@@ -8,7 +8,8 @@ public enum Face {
     UP_LEFT(5),
     DOWN_LEFT(6),
     DOWN_RIGHT(7),
-    UP_RIGHT(4);
+    UP_RIGHT(4),
+    NULL(0);
 
     private final int xGrid;
 

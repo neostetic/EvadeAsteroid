@@ -4,6 +4,7 @@ import cz.polacek.config.Config;
 import cz.polacek.engine.entities.Background;
 import cz.polacek.engine.entities.Enemy;
 import cz.polacek.engine.entities.Entity;
+import cz.polacek.engine.entities.bullet.Bullets;
 import cz.polacek.engine.entities.gui.GUI;
 import cz.polacek.engine.entities.gui.GUIType;
 import cz.polacek.engine.entities.powerup.Powerup;
@@ -50,8 +51,7 @@ public class Panel extends JPanel implements Runnable {
     PanelState panelState = PanelState.MAIN_MENU;
     PanelController panelController = Config.PANEL_CONTROLLER;
 
-    Interval enemySpawnInterval = new Interval(Config.ENEMY_SPAWN_INTERVAL);
-
+    Interval bulletInterval = new Interval(Config.BULLET_INTERVAL);
     public Panel(JFrame frame) {
         this.setSize(new Dimension(Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT));
         this.setBackground(Color.BLACK);
@@ -72,7 +72,7 @@ public class Panel extends JPanel implements Runnable {
 
         double drawInterval = (double) 1000000000 / FPS;
         double nextDrawTime = System.nanoTime() + drawInterval;
-        enemySpawnInterval.start();
+        bulletInterval.start();
 
         int framesCount = 0;
         long startTime = System.nanoTime();
@@ -151,22 +151,35 @@ public class Panel extends JPanel implements Runnable {
     // - Jan Poláček
 
     boolean firstRun = true;
+    boolean pause = false;
     EndScreen endScreen = new EndScreen(keyHandler);
     Background background = new Background(player);
     Powerup powerup = new Powerup();
+    Bullets bullets = new Bullets(keyHandler);
 
     public void update() {
-        for (Enemy enemy : enemies) {
-            enemy.update();
-            if (enemy.getRect().intersects(player.getRect())) {
-                enemy.isHit();
-                player.isHit();
+        if (!pause) {
+            for (Enemy enemy : enemies) {
+                enemy.update();
+                for (int i = 0; i < bullets.bullets.length; i++) {
+                    if (enemy.getRect().intersects(bullets.bullets[i].getRect())) {
+                        enemy.isHit();
+                        bullets.bullets[i].isHit();
+                        SCORE = SCORE + 200;
+                    }
+                }
+                if (enemy.getRect().intersects(player.getRect())) {
+                    enemy.isHit();
+                    player.isHit();
+                }
             }
-        }
 
-        player.update();
-        background.update(player);
-        powerup.update(player, this);
+
+            player.update();
+            background.update(player);
+            powerup.update(player, this);
+            bullets.update(player, bulletInterval);
+        }
 
         switch (panelState) {
 
@@ -186,11 +199,16 @@ public class Panel extends JPanel implements Runnable {
             case GAME -> {
                 if (firstRun) {
                     player = new Player(keyHandler);
+                    bullets = new Bullets(keyHandler);
                     endScreen.resetName();
                     SCORE = 0;
                     firstRun = false;
                 }
-                SCORE++;
+                if (Objects.equals(keyHandler.typedKey, "p")) {
+                    pause = !pause;
+                    keyHandler.typedKey = "";
+                }
+                if (!pause) SCORE++;
                 if (!player.isAlive()) {
                     panelState = PanelState.END_SCREEN;
                     firstRun = true;
@@ -266,6 +284,7 @@ public class Panel extends JPanel implements Runnable {
             case GAME -> {
                 drawSprite(graphics2D, powerup);
                 drawSprite(graphics2D, player);
+                drawSprite(graphics2D, bullets.bullets);
                 drawSprite(graphics2D, enemies);
                 for (int i = 0; i < Config.PLAYER_MAX_HEALTH; i++) {
                     drawSprite(graphics2D, new GUI(0, Config.TILES_VERTICAL - 1, i, GUIType.HEALTH, player));
@@ -274,10 +293,15 @@ public class Panel extends JPanel implements Runnable {
                     drawSprite(graphics2D, new GUI(0, Config.TILES_VERTICAL - 2, i, GUIType.SHIELD, player));
                 }
                 drawText(graphics2D, new Text("score:" + SCORE, Text.Alignment.TOP_RIGHT, 0, 0));
+                if (pause) {
+                    drawSprite(graphics2D, 1, 8, 0, 0, Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT);
+                    drawText(graphics2D, new Text("PAUSED", Text.Alignment.MIDDLE_CENTER, 0, 0));
+                }
             }
             case END_SCREEN -> {
                 drawSprite(graphics2D, powerup);
                 drawSprite(graphics2D, player);
+                drawSprite(graphics2D, bullets.bullets);
                 drawSprite(graphics2D, enemies);
                 drawSprite(graphics2D, 1, 8, 0, 0, Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT);
                 drawText(graphics2D, new TextLined("" +

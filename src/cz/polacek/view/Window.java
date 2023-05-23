@@ -4,6 +4,7 @@ import cz.polacek.config.Config;
 import cz.polacek.engine.Panel;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Window {
 
