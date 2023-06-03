@@ -1,3 +1,5 @@
+Coin keyBind - C
+
 Input binds for controller:
 UP      - W
 DOWN    - S
@@ -5,11 +7,10 @@ LEFT    - A
 RIGHT   - D
 X/A     - ENTER
 O/B     - SPACE
-SQ/X    - ENTER
-TR/Y    - ENTER
+SQ/X    - SPACE
+TR/Y    - SPACE
 
 Default score:
-
 1000;IAN;
 900;NEO;
 800;STU;

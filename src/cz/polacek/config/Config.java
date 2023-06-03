@@ -8,6 +8,7 @@ public  class Config {
 
     static public String TITLE = "EvadeAsteroid 2.0";
     static public int PREFERRED_FPS = 60;
+    static public boolean COIN_PLAY = false;
     static public PanelController PANEL_CONTROLLER = PanelController.XBOX_COLOR;
     static public ColorPalette COLOR_PALETTE = ColorPalette.PICO8;
     static public boolean WINDOW_RESIZABLE = false;
@@ -127,5 +128,4 @@ public  class Config {
             new TextStringFormatter("%down", new char[] {128}),
             new TextStringFormatter("%dev", new char[] {231}),
     };
-
 }

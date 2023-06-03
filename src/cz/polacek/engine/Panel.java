@@ -190,9 +190,18 @@ public class Panel extends JPanel implements Runnable {
                 }
                 player.setxVel(-Config.PLAYER_SPEED / 2);
                 player.setyVel(Config.PLAYER_SPEED / 2);
-                if (keyHandler.enterPressed) {
-                    panelState = PanelState.GAME;
-                    firstRun = true;
+                if (Config.COIN_PLAY) {
+                    if (Objects.equals(keyHandler.typedKey, "c")) {
+                        panelState = PanelState.GAME;
+                        firstRun = true;
+                        keyHandler.typedKey = "";
+                    }
+                } else {
+                    if (Objects.equals(keyHandler.typedKey, "\n")) {
+                        panelState = PanelState.GAME;
+                        firstRun = true;
+                        keyHandler.typedKey = "";
+                    }
                 }
             }
 
@@ -220,6 +229,7 @@ public class Panel extends JPanel implements Runnable {
                 if (keyHandler.enterPressed) {
                     NAME = endScreen.name.trim();
                     panelState = PanelState.SCORE_SCREEN;
+                    keyHandler.typedKey = "";
                 }
             }
 
@@ -230,9 +240,10 @@ public class Panel extends JPanel implements Runnable {
                 }
                 player.setxVel(-Config.PLAYER_SPEED / 2);
                 player.setyVel(Config.PLAYER_SPEED / 2);
-                if (keyHandler.spacePressed || keyHandler.backspacePressed) {
+                if (Objects.equals(keyHandler.typedKey, "\n")) {
                     panelState = PanelState.MAIN_MENU;
                     firstRun = true;
+                    keyHandler.typedKey = "";
                 }
             }
 
@@ -266,20 +277,30 @@ public class Panel extends JPanel implements Runnable {
 
         switch (panelState) {
             case MAIN_MENU -> {
-                drawText(graphics2D, new TextLined("" +
-                        "EvadeAsteroid%n" +
-                        "2.0%n" +
-                        "%n" +
-                        "%n" +
-                        "shoot by%n" +
-                        panelController.shoot + "%n" +
-                        "%n" +
-                        "move by%n" +
-                        panelController.move + "%n" +
-                        "%n" +
-                        "%n" +
-                        "press " + panelController.enter + " to start",
-                        Text.Alignment.TOP_CENTER, 0, 2));
+                if (Config.COIN_PLAY) {
+                    drawText(graphics2D, new TextLined("" +
+                            "EvadeAsteroid%n" +
+                            "2.0%n" +
+                            "%n%n%n%n%n%n" +
+                            "insert coin%n" +
+                            "to play",
+                            Text.Alignment.TOP_CENTER, 0, 2));
+                } else {
+                    drawText(graphics2D, new TextLined("" +
+                            "EvadeAsteroid%n" +
+                            "2.0%n" +
+                            "%n" +
+                            "%n" +
+                            "shoot by%n" +
+                            panelController.shoot + "%n" +
+                            "%n" +
+                            "move by%n" +
+                            panelController.move + "%n" +
+                            "%n" +
+                            "%n" +
+                            "press " + panelController.enter + " to start",
+                            Text.Alignment.TOP_CENTER, 0, 2));
+                }
             }
             case GAME -> {
                 drawSprite(graphics2D, powerup);
@@ -319,7 +340,7 @@ public class Panel extends JPanel implements Runnable {
             }
             case SCORE_SCREEN -> {
                 drawText(graphics2D, highScores);
-                drawText(graphics2D, new Text("press " + panelController.back + " to exit", Text.Alignment.TOP_CENTER, 0, 1));
+                drawText(graphics2D, new Text("press " + panelController.enter + " to exit", Text.Alignment.TOP_CENTER, 0, 1));
             }
             default -> {
             }

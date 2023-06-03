@@ -1,5 +1,8 @@
 package cz.polacek.engine.handler;
 
+import cz.polacek.config.Config;
+import cz.polacek.engine.utils.ColorPalette;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Objects;

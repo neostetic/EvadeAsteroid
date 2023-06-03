@@ -1,12 +1,19 @@
 package cz.polacek.engine.panels;
 
 public enum PanelController {
+    ARCADE(
+        "%key",
+        "%key",
+        "%dpad_up,%dpad_down,%dpad_left,%dpad_right",
+        "%key"
+    ),
     COMPUTER(
         "%key_enter",
         "%key_spacebar,%key_enter",
         "%key_w,%key_s,%key_a,%key_d",
         "%key_spacebar"
     ),
+    PC(COMPUTER.enter, COMPUTER.shoot, COMPUTER.move, COMPUTER.back),
     XBOX(
         "%xbox_a",
         "%xbox_a,%xbox_b,%xbox_x,%xbox_y",
